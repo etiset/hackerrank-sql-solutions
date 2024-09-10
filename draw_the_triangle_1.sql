@@ -1,0 +1,8 @@
+DECLARE @ITER INT;
+SET @ITER = 20;
+
+WHILE @ITER > 0
+    BEGIN
+        SELECT REPLICATE('* ', @ITER);
+        SET @ITER = @ITER - 1;
+    END
