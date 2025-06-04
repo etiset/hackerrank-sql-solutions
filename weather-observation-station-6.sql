@@ -1,3 +1,3 @@
 SELECT DISTINCT CITY
 FROM STATION
-WHERE LEFT(CITY, 1) IN ('A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u')
+WHERE UPPER(LEFT(CITY, 1)) IN ('A', 'E', 'I', 'O', 'U')
