@@ -1,0 +1,13 @@
+WITH OrderedLat AS (
+    SELECT
+        LAT_N,
+        ROW_NUMBER() OVER (ORDER BY LAT_N) AS ROW_ID
+    FROM STATION
+),
+TotalRows AS (
+    SELECT MAX(ROW_ID) AS TOTAL_ROWS FROM OrderedLat
+)
+
+SELECT ROUND(AVG(LAT_N), 4)
+FROM OrderedLat, TotalRows
+WHERE ROW_ID IN (FLOOR((TOTAL_ROWS + 1) / 2), CEIL((TOTAL_ROWS + 1) / 2))
